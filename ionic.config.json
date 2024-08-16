@@ -1,0 +1,7 @@
+{
+  "name": "redcard-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
