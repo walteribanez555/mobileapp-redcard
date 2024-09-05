@@ -44,8 +44,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 }
               ],
               "fileReplacements": [
@@ -126,7 +126,10 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@ionic/angular-toolkit"]
+    "schematicCollections": [
+      "@ionic/angular-toolkit"
+    ],
+    "analytics": "d5e84a52-218c-4e68-b04d-886564dab514"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

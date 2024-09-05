@@ -1,0 +1,156 @@
+<ion-content [fullscreen]="true" color="light">
+  <ng-container *ngIf="isloading" >
+    <ion-header class="ion-no-border" slot="fixed">
+      <ion-toolbar>
+        <ion-buttons slot="start" mode="md">
+          <ion-back-button color="light" defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="bg-container loading">
+      <div  class="bg"></div>
+    </div>
+
+
+    <ion-item class="loading" lines="none">
+      <ion-label class="eventInfo">
+        <ion-row>
+          <ion-col class="item-1">
+
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="item-2">
+            <!-- <ion-icon name="calendar-outline"></ion-icon>
+            {{event.date | date: 'MMM d, y'}} -->
+          </ion-col>
+        </ion-row>
+      </ion-label>
+
+      <div class="slot" slot="end" align="center">
+      </div>
+    </ion-item>
+
+    <ion-item class="loading" lines="none">
+      <ion-label class="eventInfo">
+        <ion-row>
+          <ion-col class="item-1">
+
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="item-2">
+            <!-- <ion-icon name="calendar-outline"></ion-icon>
+            {{event.date | date: 'MMM d, y'}} -->
+          </ion-col>
+        </ion-row>
+      </ion-label>
+
+    </ion-item>
+
+  </ng-container>
+
+
+  <ng-container >
+    <ion-header class="ion-no-border" slot="fixed">
+      <ion-toolbar>
+        <ion-buttons slot="start" mode="md">
+          <ion-back-button color="light" defaultHref="/home"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="bg-container">
+      <div class=" relative  px-6 md:px-8" >
+        <swiper-container class="swiper-container" [id]="'swiper-' + indexCat"init="false" >
+          <swiper-slide *ngFor="let file of files" class="py-2"  >
+            <ion-card>
+              <img style="height: 300px;" [src]="file" >
+            </ion-card>
+          </swiper-slide>
+
+        </swiper-container>
+        <button [id]="'swiper-button-prev-' + indexCat"   class=" swiper-button-prev bg-primary p-1 rounded-full  absolute top-1/2 translate-y-[-50%] left-0 z-10" >
+          <svg-icon src="./assets/icons/heroicons/outline/arrow-sm-right.svg" [svgClass]="'h-3 w-3 text-white rotate-180 '"></svg-icon>
+        </button>
+        <button  [id]="'swiper-button-next-' + indexCat"   class=" swiper-button-next bg-primary p-1 rounded-full  absolute top-1/2 translate-y-[-50%] right-0 z-10">
+          <svg-icon src="./assets/icons/heroicons/outline/arrow-sm-up.svg" [svgClass]="'h-3 w-3 text-white rotate-90' "></svg-icon>
+        </button>
+      </div>
+    </div>
+
+    <ion-item lines="none" *ngIf="selectedCoverage" >
+      <ion-label class="eventInfo">
+        {{selectedCoverage.title}}
+
+      </ion-label>
+
+
+    </ion-item>
+
+    <ion-card *ngIf="selectedCoverage" >
+
+      <ion-list >
+        <ion-list-header> Acerca del plan </ion-list-header>
+
+        <p class="ion-margin-horizontal">{{selectedCoverage.description}}</p>
+
+        <!-- <ion-row>
+          <ion-col class="ion-align-items-center">
+            <ion-avatar>
+              <img src="assets/imgs/avatar1.png" />
+            </ion-avatar>
+            <ion-avatar class="participant">
+              <img src="assets/imgs/avatar2.png" />
+            </ion-avatar>
+            <ion-avatar class="participant">
+              <img src="assets/imgs/avatar3.jpg" />
+            </ion-avatar>
+            <ion-avatar class="ion-text-center participant bg-avatar">
+              <ion-text color="dark">+2k</ion-text>
+            </ion-avatar>
+          </ion-col>
+
+          <ion-col class="ion-align-items-center participant-text">
+            <ion-label>
+              <ion-text color="dark"><strong>Participant</strong></ion-text>
+              <p>All over the world</p>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+
+        <ion-list-header class="ion-align-items-center">
+          Location
+        </ion-list-header> -->
+
+        <!-- <div class="map">
+          <img src="assets/imgs/maps.png">
+        </div> -->
+
+      </ion-list>
+    </ion-card>
+  </ng-container>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" >
+  <ion-row>
+    <ion-col size="12">
+      <ion-button
+
+        (click)="onClickFooter()"
+        expand="block"
+        shape="round"
+        color="primary"
+        size="large"
+        [strong]="true"
+      >
+        <ion-text>Cotizar</ion-text>
+      </ion-button>
+    </ion-col>
+
+  </ion-row>
+  <!-- <ion-toolbar>
+  </ion-toolbar> -->
+</ion-footer>

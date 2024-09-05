@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+
+  <!-- Login Page -->
+  <div class="container"  >
+    <h1 class="heading">👋 Bienvenido<br><br></h1>
+    <p class="para">Ingresa tu usuario para continuar!</p>
+    <p class="back"  routerLink="../home"  >Regresar</p>
+
+    <form [formGroup]="formData">
+      <ion-item lines="none" class="ion-item" color="background" >
+        <fieldset  class="input-item">
+          <legend>User id</legend>
+          <ion-input formControlName="email" type="email" placeholder="name@domain.com"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item" color="background" >
+        <fieldset class="input-item">
+          <legend>Password</legend>
+          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-button class="login-button" (click)="login()" expand="block">Iniciar Sesion</ion-button>
+      <ion-text style="width: 100%;display: flex;  " >
+        <span style="text-align: center; width: 100%;justify-content: center;" *ngIf="isLoading" >Espere un momento</span>
+        <span style="color: red;  text-align: center; width: 100%;justify-content: center;" *ngIf="isError" >Error en el inicio de sesion, pruebe nuevamente</span>
+      </ion-text>
+    </form>
+  </div>
+
+
+</ion-content>
+<ion-footer color="white">
+  <ion-toolbar>
+    <p class="copyright">{{'Necesitas soporte?  '}} <span (click)="onSupportClick()" >click aqui</span> </p>
+  </ion-toolbar>
+</ion-footer>

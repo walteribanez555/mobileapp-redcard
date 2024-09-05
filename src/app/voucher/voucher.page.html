@@ -1,0 +1,229 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="wrapper">
+    <ion-item lines="none">
+      <ion-label color="light">
+        <div>
+          <ion-button (click)="logout()">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <ion-text>
+              <span>Cerrar Sesion</span>
+            </ion-text>
+
+          </ion-button>
+
+        </div>
+        <div>
+          <ion-text color="medium">
+            <h2>
+              Bienvenido nuevamente
+            </h2>
+          </ion-text>
+        </div>
+        <!-- <ion-text color="medium">
+          <h1>
+            {{}}
+          </h1>
+        </ion-text> -->
+      </ion-label>
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-list class="margin-top">
+
+
+    <ion-list-header>
+      Enlaces
+      <ion-button (click)="onLoadLinks()" >
+        <ion-icon name="reload-outline"></ion-icon>
+      </ion-button>
+
+    </ion-list-header>
+
+    <ng-container *ngIf="isloadingLinks" >
+
+      <ion-item class="loading" lines="none">
+        <ion-label class="eventInfo">
+          <ion-row>
+            <ion-col class="item-1">
+
+            </ion-col>
+          </ion-row>
+
+        </ion-label>
+
+
+      </ion-item>
+      <ion-item class="loading" lines="none">
+        <ion-label class="eventInfo">
+          <ion-row>
+            <ion-col class="item-1">
+
+            </ion-col>
+          </ion-row>
+
+        </ion-label>
+
+
+      </ion-item>
+
+
+    </ng-container>
+
+    @for (link of links; track $index) {
+      <ion-card (click)="openUrl(link.url)" >
+        <ion-item lines="none">
+          <ion-label>
+            <span>
+              {{link.title}}
+            </span>
+
+            <p>
+              {{link.subtitle}}
+            </p>
+          </ion-label>
+
+          <ion-fab-button slot="end" size="small">
+            <ion-icon name="link-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+      </ion-card>
+
+    }
+
+
+
+
+
+
+
+  </ion-list>
+  <ion-list class="margin-top">
+    <!-- <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components"></a> -->
+
+    <ion-list-header>
+      Planes Recomendados
+      <ion-button  (click)="onloadListServices()" >
+        <ion-icon name="reload-outline"></ion-icon>
+      </ion-button>
+    </ion-list-header>
+
+    <ng-container *ngIf="isloadingServices" >
+
+      <ion-item class="loading" lines="none">
+        <ion-label class="eventInfo">
+          <ion-row>
+            <ion-col class="item-1">
+
+            </ion-col>
+          </ion-row>
+
+        </ion-label>
+
+
+      </ion-item>
+
+    </ng-container>
+
+    <swiper-container #event_upcoming [modules]="swiperModules" [slidesPerView]="1.35" [keyboard]="true"
+      [centerSlides]="true">
+      @for(service of listServicesUi; track $index) {
+      <swiper-slide>
+        <ion-card class="event1" [routerLink]="['/', 'home', 'services', service.service_id]">
+          <ion-item lines="none">
+            <img [src]="service.img_url" width="50" height="50">
+
+
+            <ion-label>
+
+              <p class="title">
+                <ion-text color="dark"> {{ service.service.servicio }} </ion-text>
+              </p>
+
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </swiper-slide>
+      }
+    </swiper-container>
+  </ion-list>
+
+
+  <ion-list class="margin-top">
+
+
+    <ion-list-header>
+      Mis Vouchers
+      <ion-button>
+        <ion-icon name="reload-outline"></ion-icon>
+      </ion-button>
+    </ion-list-header>
+
+
+    <ng-container *ngIf="isloadingVouchers" >
+
+      <ion-item class="loading" lines="none">
+        <ion-label class="eventInfo">
+          <ion-row>
+            <ion-col class="item-1">
+
+            </ion-col>
+          </ion-row>
+
+        </ion-label>
+
+
+      </ion-item>
+
+    </ng-container>
+
+    @for(voucher of reportes; track $index) {
+    <ion-card class="event2"
+    (click)="navigateToVoucher(voucher)"
+
+    >
+
+
+
+      <ion-item lines="none">
+
+
+        <ion-label>
+
+          <p>
+            <ion-text color="dark"> {{ getNameServiceById(voucher.servicio_id) }} </ion-text>
+
+          </p>
+          <span>
+            <ion-text color="dark"> {{ voucher.fecha_salida.split('T')[0] + '/' + voucher.fecha_retorno.split('T')[0] }} </ion-text>
+
+          </span>
+          <span>
+            <ion-text color="dark"> {{ voucher.primer_nombre+ ' ' + voucher.primer_apellido }} </ion-text>
+
+          </span>
+
+
+          <ion-chip color="success">
+            <ion-text > {{ getStatusPoliza(voucher) }} </ion-text>
+          </ion-chip>
+
+
+        </ion-label>
+
+        <ion-fab-button slot="end" size="small">
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-item>
+
+
+    </ion-card>
+    }
+
+  </ion-list>
+
+
+
+</ion-content>

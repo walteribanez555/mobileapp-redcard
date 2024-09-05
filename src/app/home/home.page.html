@@ -1,20 +1,183 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="wrapper">
+    <ion-item lines="none">
+      <ion-label color="light">
+        <div>
+          <ion-text color="medium" >
+            <h2>
+              Viaja Tranquilo y Protegido
+            </h2>
+          </ion-text>
+        </div>
+        <ion-text color="medium">
+          <h1>
+            RED CARD Assist
+          </h1>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+
+    <ion-toolbar class="srchBar" mode="ios">
+
+
+      <ion-toolbar class="srchBar" >
+        <ion-button routerLink="/voucher"  expand="block" shape="round" color="primary" size="medium" [strong]="true">
+          <ion-text>Buscar mi Voucher</ion-text>
+        </ion-button>
+      </ion-toolbar>
+    </ion-toolbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content color="light">
+ <ion-list class="margin-top" >
+  <ion-list-header>
+    Listado de planes
+    <ion-button (click)="onloadListServices()" >
+      <ion-icon name="reload-outline"></ion-icon>
+    </ion-button>
+  </ion-list-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+ </ion-list>
+
+<ng-container *ngIf="onLoading" >
+  <ion-card *ngIf="onLoading"
+    class="event2 onloading"
+  >
+  <ion-item lines="none">
+
+
+    <ion-fab-button slot="end" size="small">
+      <!-- <ion-icon name="arrow-forward-outline"></ion-icon> -->
+    </ion-fab-button>
+  </ion-item>
+  </ion-card>
+  <ion-card *ngIf="onLoading"
+    class="event2 onloading"
+  >
+  <ion-item lines="none">
+
+
+    <ion-fab-button slot="end" size="small">
+      <!-- <ion-icon name="arrow-forward-outline"></ion-icon> -->
+    </ion-fab-button>
+  </ion-item>
+  </ion-card>
+
+</ng-container>
+
+
+  @for(service of listServicesUi; track $index) {
+  <ion-card
+    [routerLink]="['/', 'home', 'services', service.service_id]"
+    class="event2"
+    [style.backgroundImage]="'url('+ service.img_url +')'"
+  >
+  <ion-item lines="none">
+    <ion-label>
+      <span>
+        {{ service.destiny }}
+      </span>
+
+      <p>
+        {{ service.service.servicio }}
+      </p>
+    </ion-label>
+
+    <ion-fab-button slot="end" size="small">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-item>
+  </ion-card>
+  }
+
+  <ion-list class="margin-top" >
+    <ion-list-header>
+      Listado de Coberturas
+      <ion-button (click)="onloadListServices()" >
+        <ion-icon name="reload-outline"></ion-icon>
+      </ion-button>
+    </ion-list-header>
+
+   </ion-list>
+
+   @for(coverage of listCoverages; track $index) {
+    <ion-card
+      [routerLink]="['/', 'home', 'coverages', coverage.coverage_id]"
+      class="event2"
+      [style.backgroundImage]="'url('+ coverage.files.split(',')[0] +')'"
+    >
+    <ion-item lines="none">
+      <ion-label>
+        <span>
+          {{ coverage.title }}
+        </span>
+
+        <p>
+          {{ coverage.description }}
+        </p>
+      </ion-label>
+
+      <ion-fab-button slot="end" size="small">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
+    </ion-card>
+    }
+
+
+
+   <ion-list class="margin-top" >
+    <ion-list-header>
+      Listado de Descuentos
+      <ion-button (click)="onloadListServices()" >
+        <ion-icon name="reload-outline"></ion-icon>
+      </ion-button>
+    </ion-list-header>
+
+   </ion-list>
+
+   @for(discount of listDiscounts; track $index) {
+    <ion-card
+      [routerLink]="['/', 'home', 'discounts', discount.discount_id]"
+      class="event2"
+      [style.backgroundImage]="'url('+ discount.imagesUrl.split(',')[0] +')'"
+    >
+    <ion-item lines="none">
+      <ion-label>
+        <span>
+          {{ discount.title }}
+        </span>
+
+        <p>
+          {{ discount.description }}
+        </p>
+      </ion-label>
+
+      <ion-fab-button slot="end" size="small">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
+    </ion-card>
+    }
+
 </ion-content>
+
+
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="btn-footer" expand="block" shape="round" color="primary" size="large"
+    (click)="onClickFooter()"
+      >
+      <ion-text style="display: flex;  align-items: center; width: 100%;">
+        <span style="font-size: 16px;text-align: center; width: 100%;" > Cotiza tu Voucher</span>
+      </ion-text>
+
+
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+
+
+

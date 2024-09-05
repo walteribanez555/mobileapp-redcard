@@ -24,6 +24,11 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import "./theme/fonts.scss";
+
+*{
+  font-family: 'Lato';
+}
 
 /**
  * Ionic Dark Mode
@@ -35,3 +40,10 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+ion-searchbar {
+  .searchbar-input {
+      font-size: 0.9rem !important;
+    }
+}

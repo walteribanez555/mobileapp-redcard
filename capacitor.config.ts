@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'redcard-angular',
+  appId: 'com.redcard.assist',
+  appName: 'RED CARD Assist',
   webDir: 'www'
 };
 
